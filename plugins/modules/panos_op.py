@@ -114,7 +114,6 @@ except ImportError:
 
 def main():
     helper = get_connection(
-        vsys=True,
         with_classic_provider_spec=True,
         argument_spec=dict(
             cmd=dict(required=True),

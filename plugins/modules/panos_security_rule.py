@@ -70,14 +70,6 @@ options:
         default: ["any"]
         type: list
         elements: str
-    hip_profiles:
-        description: >
-            - If you are using GlobalProtect with host information profile (HIP) enabled, you can also base the policy
-            on information collected by GlobalProtect. For example, the user access level can be determined HIP that
-            notifies the firewall about the user's local configuration.
-        default: ["any"]
-        type: list
-        elements: str
     destination_zone:
         description:
             - List of destination zones.
@@ -377,7 +369,6 @@ def main():
             source_zone=dict(type="list", elements="str", default=["any"]),
             source_ip=dict(type="list", elements="str", default=["any"]),
             source_user=dict(type="list", elements="str", default=["any"]),
-            hip_profiles=dict(type="list", elements="str", default=["any"]),
             destination_zone=dict(type="list", elements="str", default=["any"]),
             destination_ip=dict(type="list", elements="str", default=["any"]),
             application=dict(type="list", elements="str", default=["any"]),
@@ -458,7 +449,6 @@ def main():
         "tozone": module.params["destination_zone"],
         "source": module.params["source_ip"],
         "source_user": module.params["source_user"],
-        "hip_profiles": module.params["hip_profiles"],
         "destination": module.params["destination_ip"],
         "application": module.params["application"],
         "service": module.params["service"],
